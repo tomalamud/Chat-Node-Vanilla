@@ -42,6 +42,7 @@ const connect = (host, port) => {
 
   socket.on("error", (err) => error(err.message));
 }
+
 const main = () => {
   if (process.argv.length != 4) {
     error(`node ${__filename} [host] [port]`);

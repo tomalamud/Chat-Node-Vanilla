@@ -9,7 +9,7 @@ const error = (message) => {
   process.exit(1);
 }
 
-const sendMessage = (message, origin) => {
+const sendMessage = (origin, message) => {
   for (const socket of connections.keys()) {
     if (socket !== origin) {
       socket.write(message);
@@ -26,7 +26,7 @@ const listen = (port) => {
 
     socket.on("data", (message) => {
       if (!connections.has(socket)) {
-        console.log(`Username: ${message} set for connection [${socket.remoteAddress}:${socket.remotePort}]`)
+        console.log(`Username: ${message} set for connection [${remoteSocket}]`)
         connections.set(socket, message);
       }
       else if (message === END) {
@@ -41,7 +41,7 @@ const listen = (port) => {
         const fullMessage = `[${connections.get(socket)}]: ${message}`;
         console.log(`${remoteSocket} -> ${fullMessage}`);
         // enviar mensaje al resto de clientes
-        sendMessage(fullMessage, socket);
+        sendMessage(socket, fullMessage);
       }
     })
     socket.on("close", () => console.log(`Connection with ${remoteSocket} closed.`));
