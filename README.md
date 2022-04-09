@@ -1,7 +1,17 @@
-# Sockets
+# Sockets from the native "Net" module.
 
-Si a través de un socket envío data, esta se envía en forma de buffer de bytes, 
-pero si al buffer lo meto en una cadena de texto con ` 'txt${buffer}tx' `,
-JS lo codifica automáticamente en formato utf-8.
+As a personal challenge, I have been created this simple chat with the native "Net" module which come with Node.js
 
-Ref: https://youtu.be/ln9qz-_bT2U
+You can just clone it and run every file as:
+ 
+ ```bash
+ node server.js
+ ```
+ 
+and in other two terminals:
+
+```bash
+ node client.js
+```
+
+That's all. You will be able to send messages between your two clients while the server is watching the communication.
